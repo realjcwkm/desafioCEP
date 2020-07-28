@@ -21,7 +21,7 @@
             <div class="input-group mb-4">
                 <input class="form-control" type="text" name="cep" id="cep" placeholder="Cep" value="{{$locais->cep ?? ''}}" required>
                 <div class="input-group-append ml-2">
-                    <a href="#" onclick="buscarCEP();">
+                    <a href="#" onclick="buscarCEP(); return false;">
                         <button class="btn btn-info">Buscar cep</button>
                     </a>
                 </div>
