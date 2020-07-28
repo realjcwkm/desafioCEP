@@ -8,6 +8,14 @@ class Local extends Model
 {
     protected $table = 'Locais';
     protected $fillable = [
-        'nome', 'cep', 'logradouro ', 'complemento ', 'numero ', 'bairro', 'uf', 'cidade', 'data'
+        'nome',
+        'cep',
+        'logradouro',
+        'complemento',
+        'numero',
+        'bairro',
+        'uf',
+        'cidade',
+        'data'
     ];
 }

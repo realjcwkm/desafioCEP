@@ -44,20 +44,20 @@ class LocalController extends Controller
      */
     public function store(Request $request)
     {
-        $success = $this->local->create([
-            'nome'=>$request->nome,
-            'cep'=>$request->cep,
-            'logradouro'=>$request->logradouro,
-            'complemento'=>$request->complemento,
-            'numero'=>$request->numero,
-            'bairro'=>$request->bairro,
-            'uf'=>$request->uf,
-            'cidade'=>$request->cidade,
-            'data'=>$request->data,
+        $cadastrado = $this->local->create([
+            'nome' => $request->nome,
+            'cep' => $request->cep,
+            'logradouro' => $request->logradouro,
+            'complemento' => $request->complemento,
+            'numero' => $request->numero,
+            'bairro' => $request->bairro,
+            'uf' => $request->uf,
+            'cidade' => $request->cidade,
+            'data' => $request->data,
         ]);
 
-        if ($success) {
-            return redirect('index');
+        if ($cadastrado) {
+            return redirect('local');
         }
     }
 
@@ -81,7 +81,7 @@ class LocalController extends Controller
     {
         $locais = $this->local->find($id);
 
-        return view('create', compact('locais'));
+        return view('edit', compact('locais'));
     }
 
     /**
@@ -93,16 +93,16 @@ class LocalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->local->where(['id'=>$id])->update([
-            'nome'=>$request->nome,
-            'cep'=>$request->cep,
-            'logradouro'=>$request->logradouro,
-            'complemento'=>$request->complemento,
-            'numero'=>$request->numero,
-            'bairro'=>$request->bairro,
-            'uf'=>$request->uf,
-            'cidade'=>$request->cidade,
-            'data'=>$request->data,
+        $this->local->where(['id' => $id])->update([
+            'nome' => $request->nome,
+            'cep' => $request->cep,
+            'logradouro' => $request->logradouro,
+            'complemento' => $request->complemento,
+            'numero' => $request->numero,
+            'bairro' => $request->bairro,
+            'uf' => $request->uf,
+            'cidade' => $request->cidade,
+            'data' => $request->data,
         ]);
         return redirect('local');
     }
@@ -115,7 +115,9 @@ class LocalController extends Controller
      */
     public function destroy($id)
     {
-        $del = $this->local->destroy($id);
-        return($del ) ? "sim" : "não"; 
+        $del = $this->local->find($id);
+        $del->delete();
+
+        return redirect('/local')->with('success', 'Task deleted successfully');
     }
 }

@@ -14,7 +14,7 @@ class CreateLocalsTable extends Migration
     public function up()
     {
         Schema::create('Locais', function (Blueprint $table) {
-            $table->increments('id', 10);
+            $table->increments('id');
             $table->string('nome', 100);
             $table->string('cep', 8);
             $table->string('logradouro', 150);
@@ -24,6 +24,7 @@ class CreateLocalsTable extends Migration
             $table->string('uf', 2);
             $table->string('cidade', 100);
             $table->date('data');
+            $table->timestamps();
         });
     }
 

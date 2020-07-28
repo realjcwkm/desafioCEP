@@ -34,7 +34,9 @@
                         <!-- <a data-confirm="Deseja mesmo excluir?" data-method="delete" href="{{url('local/'.$local->id)}}" rel="nofollow">
                             <button class="btn btn-danger">Excluir</button>
                         </a> -->
-                        <a data-confirm="Are you sure?" data-method="destroy" href="{{url('local/'.$local->id)}}" rel="nofollow">Delete</a>
+                        <a href="{{ route('local.destroy', ['id' => $local->id]) }}">
+                            <button class="btn btn-danger">Excluir</button>
+                        </a>
                     </td>
                 </tr>
                 @endforeach

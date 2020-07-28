@@ -11,16 +11,17 @@
 
 <body>
     <script src="{{asset('js/javascript.js')}}"> </script>
-    <h1 class="text-center">Cadastrar local visitado - ibiJus</h1>
+    <h1 class="text-center">Editar local visitado - ibiJus</h1>
 
     <div class="col-6 m-auto">
-        <form name="formCad" id="formCad" method="post" action="{{url('local')}}">
+        <form name="formEdit" id="formEdit" method="post" action="{{url('local/'.$locais->id)}}">
+            @method('PUT')
             @csrf
             <input class="form-control" type="text" name="nome" id="nome" placeholder="Nome" value="{{$locais->nome ?? ''}}" required><br>
             <div class="input-group mb-4">
                 <input class="form-control" type="text" name="cep" id="cep" placeholder="Cep" value="{{$locais->cep ?? ''}}" required>
                 <div class="input-group-append ml-2">
-                    <a href="">
+                    <a href="#" onclick="buscarCEP();">
                         <button class="btn btn-info">Buscar cep</button>
                     </a>
                 </div>
@@ -34,8 +35,8 @@
             <input class="form-control" type="date" name="data" id="data" placeholder="Data da visita" value="{{$locais->data ?? ''}}" required><br>
         </form>
         <div class="text-center input-group col-6 m-auto">
-            <a href="javascript:{}" onclick="document.getElementById('formCad').submit();">
-                <button class="btnEnviar">Cadastrar</button>
+            <a href="javascript:{}" onclick="document.getElementById('formEdit').submit();">
+                <button class="btnEnviar">Salvar</button>
             </a>
             <div class="input-group-append ml-5">
                 <a href="{{ url('local') }}">
